@@ -41,7 +41,7 @@ d1_bp=d1.copy()
 print(d1.max())
 
 ## SOMF
-pp=ps.dip2dc(d1,2,10,2,0.01, 1, 0.000001,[50,50,1],1);
+pp=ps.dip2dc(d1,2,10,2,0.01, 1, 0.000001,[50,50,1],1)
 print('finished')
 d1=ps.somf2dc(d1,pp,8,2,0.01,1) #SOMF
 d1_bpsomf=d1.copy()
@@ -58,23 +58,44 @@ d1_bpsomffk=d1.copy()
 # scipy.io.savemat("das2d.mat", datas)
 
 ## plot
-clip=20;
+clip=20
 fig = plt.figure(figsize=(6, 8))
 ax=plt.subplot(3,2,1)
-plt.imshow(dn,cmap=seis(),clim=(-clip,clip),aspect='auto');ax.set_xticks([]);ax.set_yticks([]);
-plt.title('Raw DAS data');
+plt.imshow(dn,cmap=seis(),
+           clim=(-clip,clip),
+           aspect='auto')
+ax.set_xticks([])
+ax.set_yticks([])
+plt.title('Raw DAS data')
 ax=plt.subplot(3,2,3)
-plt.imshow(d1_bp,cmap=seis(),clim=(-clip,clip),aspect='auto');ax.set_xticks([]);ax.set_yticks([]);
-plt.title('BP');
+plt.imshow(d1_bp,cmap=seis(),
+           clim=(-clip,clip),
+           aspect='auto')
+ax.set_xticks([])
+ax.set_yticks([])
+plt.title('BP')
 ax=plt.subplot(3,2,4)
-plt.imshow(d1_bpsomf,cmap=seis(),clim=(-clip,clip),aspect='auto');ax.set_xticks([]);ax.set_yticks([]);
-plt.title('BPSOMF');
+plt.imshow(d1_bpsomf,cmap=seis(),
+           clim=(-clip,clip),
+           aspect='auto')
+ax.set_xticks([]);ax.set_yticks([])
+plt.title('BPSOMF')
 ax=plt.subplot(3,2,5)
-plt.imshow(d1_bpsomffk,cmap=seis(),clim=(-clip,clip),aspect='auto');ax.set_xticks([]);ax.set_yticks([]);
-plt.title('BPSOMFFK');
+plt.imshow(d1_bpsomffk,
+           cmap=seis(),
+           clim=(-clip,clip),
+           aspect='auto')
+ax.set_xticks([])
+ax.set_yticks([])
+plt.title('BPSOMFFK')
 ax=plt.subplot(3,2,6)
-plt.imshow(dn-d1_bpsomffk,cmap=seis(),clim=(-clip,clip),aspect='auto');ax.set_xticks([]);ax.set_yticks([]);
-plt.title('Removed Noise');
+plt.imshow(dn-d1_bpsomffk,
+           cmap=seis(),
+           clim=(-clip,clip),
+           aspect='auto')
+ax.set_xticks([])
+ax.set_yticks([])
+plt.title('Removed Noise')
 # plt.savefig('test_pyseistr_das.png',format='png',dpi=300)
 plt.show()
 
