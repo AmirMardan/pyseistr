@@ -2,7 +2,11 @@
 
 import os
 import numpy as np
-
+# import sys
+# sys.path.append(os.path.abspath("./pyseistr"))
+import matplotlib.pyplot as plt
+import pyseistr as ps
+from pyseistr import cseis as seis
 ## You can either download the data using the following commands or using the binary file from https://github.com/aaspip/data
 # https://github.com/aaspip/data/blob/main/forge0723.bin
 
@@ -26,28 +30,25 @@ import numpy as np
 # data[:,:]=segydata.data
 # pindex=24811
 # dn=data[200:1160,pindex-20:pindex+500-20].transpose();
-
-fid=open("forge0723.bin","rb");
+data_path = os.path.abspath("./pyseistr/data/forge0723.bin")
+fid=open(data_path,"rb")
 dn = np.fromfile(fid, dtype = np.float32, count = 500*960).reshape([500,960],order='F')
-
-import matplotlib.pyplot as plt
-import pyseistr as ps
-from pyseistr import cseis as seis
 
 ## BP
 print(dn.max())
-d1=ps.bandpassc(dn,0.0005,0,200,6,6,0,0);
-d1_bp=d1.copy();
+d1 = ps.bandpassc(dn,0.0005,0,200,6,6,0,0)
+d1_bp=d1.copy()
 print(d1.max())
 
 ## SOMF
 pp=ps.dip2dc(d1,2,10,2,0.01, 1, 0.000001,[50,50,1],1);
 print('finished')
-d1=ps.somf2dc(d1,pp,8,2,0.01,1);#SOMF
+d1=ps.somf2dc(d1,pp,8,2,0.01,1) #SOMF
 d1_bpsomf=d1.copy()
 
 ## FK
-d1=d1_bpsomf-ps.fkdip(d1,0.02);
+d1=d1_bpsomf-ps.fkdip(d1,
+                      0.02)
 d1_bpsomffk=d1.copy()
 
 ## compare with matlab
@@ -74,7 +75,7 @@ plt.title('BPSOMFFK');
 ax=plt.subplot(3,2,6)
 plt.imshow(dn-d1_bpsomffk,cmap=seis(),clim=(-clip,clip),aspect='auto');ax.set_xticks([]);ax.set_yticks([]);
 plt.title('Removed Noise');
-plt.savefig('test_pyseistr_das.png',format='png',dpi=300)
+# plt.savefig('test_pyseistr_das.png',format='png',dpi=300)
 plt.show()
 
 

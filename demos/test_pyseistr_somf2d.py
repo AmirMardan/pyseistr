@@ -71,7 +71,7 @@ plt.title('Filtered (SOMF)');
 ax=plt.subplot(2,4,8)
 plt.imshow(dn-d2,cmap='jet',clim=(-0.2, 0.2),aspect=0.5);ax.set_xticks([]);ax.set_yticks([]);
 plt.title('Noise (SOMF)');
-plt.savefig('test_pyseistr_somf2d.png',format='png',dpi=300)
+# plt.savefig('test_pyseistr_somf2d.png',format='png',dpi=300)
 plt.show()
 
 

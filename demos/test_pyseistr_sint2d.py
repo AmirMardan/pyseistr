@@ -15,7 +15,8 @@ import numpy as np
 ## Generate synthetic data
 from pyseistr import gensyn
 dc,dn=gensyn(noise=True);
-dc=dc[:,::10];dn=dn[:,::10];
+dc=dc[:,::10]
+dn=dn[:,::10]
 
 dc=dc[150:250,0:50];
 dn=dn[150:250,0:50];
@@ -57,7 +58,7 @@ ax=plt.subplot(2,3,5)
 plt.imshow(recon,cmap='jet',clim=(-0.2, 0.2),aspect=0.5);ax.set_xticks([]);ax.set_yticks([]);
 plt.title('Reconstructed');
 
-plt.savefig('test_pyseistr_sint2d.png',format='png',dpi=300)
+# plt.savefig('test_pyseistr_sint2d.png',format='png',dpi=300)
 plt.show()
 
 
