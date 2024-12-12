@@ -30,8 +30,8 @@ from pyseistr import cseis as seis
 # data[:,:]=segydata.data
 # pindex=24811
 # dn=data[200:1160,pindex-20:pindex+500-20].transpose();
-data_path = os.path.abspath("./pyseistr/data/forge0723.bin")
-fid=open(data_path,"rb")
+
+fid=open("forge0723.bin","rb");
 dn = np.fromfile(fid, dtype = np.float32, count = 500*960).reshape([500,960],order='F')
 
 ## BP
