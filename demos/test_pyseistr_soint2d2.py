@@ -26,7 +26,7 @@ ax=plt.subplot(1,3,3)
 plt.imshow(flat,cmap='gray',clim=(-0.02, 0.02),aspect='auto');ax.set_xticks([]);ax.set_yticks([]);plt.title('Reconstructed');
 plt.colorbar(orientation='horizontal');
 
-plt.savefig('test_pyseistr_soint2d2.png',format='png',dpi=300)
+# plt.savefig('test_pyseistr_soint2d2.png',format='png',dpi=300)
 plt.show()
 
 	

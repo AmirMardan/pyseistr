@@ -66,7 +66,7 @@ ax=plt.subplot(2,3,6)
 plt.imshow(recon2,cmap='jet',clim=(-0.2, 0.2),aspect=0.5);ax.set_xticks([]);ax.set_yticks([]);
 plt.title('Smoothed');
 
-plt.savefig('test_pyseistr_soint2d.png',format='png',dpi=300)
+# plt.savefig('test_pyseistr_soint2d.png',format='png',dpi=300)
 plt.show()
 
 
